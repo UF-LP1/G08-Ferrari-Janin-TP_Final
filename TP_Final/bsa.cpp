@@ -1,6 +1,6 @@
 #include "bsa.h"
 
-cBSA::cBSA(int cant_donaciones) {
+cBSA::cBSA(int cant_donaciones, list<cReceptor*> Lista_receptores, list<cDonante*> Lista_donantes, list<cCDS*> Lista_centrosds) {
 	this->cant_donaciones = cant_donaciones;
 }
 
@@ -25,3 +25,18 @@ bool cBSA::cumple_rdonacion(cDonante donante_ver) {
 	else
 		return false;
 }
+
+void cBSA::agregar_lista(cPaciente* paciente, list<cReceptor*> Lista_receptores, list<cDonante*> Lista_donantes) {
+	
+	if (dynamic_cast<cReceptor*>(paciente) != nullptr)
+	{
+		cReceptor* aux_r = dynamic_cast<cReceptor*>(paciente);
+		Lista_receptores.push_back(aux_r);
+	}
+	else if (dynamic_cast<cDonante*>(paciente) != nullptr)
+	{
+		cDonante* aux_d = dynamic_cast<cDonante*>(paciente);
+		Lista_donantes.push_back(aux_d);
+	}
+	return;
+};

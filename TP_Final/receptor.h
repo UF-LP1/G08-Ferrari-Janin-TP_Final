@@ -6,6 +6,7 @@
 class cReceptor :public cPaciente {
 
 public:
+	cReceptor() {}
 	cReceptor(string fluido_recibir,string fagr_lespera,int prioridad,enum e_estado estado,
 		string nombre, string fecha_nac, char sexo, string tel_contacto, int edad, float peso);
 	~cReceptor();

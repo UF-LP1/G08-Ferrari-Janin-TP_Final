@@ -21,3 +21,11 @@ string cReceptor::get_fluido_recibir()
 int cReceptor::get_prioridad() {
 	return this->prioridad;
 }
+
+e_estado cReceptor::get_estado() {
+	return this->estado;
+}
+
+time_t cReceptor::get_fagr_lespera() {
+	return this->fagr_lespera;
+}

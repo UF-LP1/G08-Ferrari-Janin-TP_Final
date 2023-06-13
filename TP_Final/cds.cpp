@@ -59,11 +59,17 @@ cLista<cReceptor*> cCDS::get_lista_receptor(){
 
 
 void cCDS::ordenar_lista() {
-
 	sort(Lista_receptores.begin(), Lista_receptores.end(), miComparacion);
+
 	return;
 }
 
 bool cCDS:: miComparacion(cReceptor Left, cReceptor Right) {
-	return Left.get_prioridad() < Right.get_prioridad();
+	if (Left.get_prioridad() < Right.get_prioridad())
+		return true;
+	if (Left.get_estado() > Right.get_estado())
+		return true;
+	if (Left.get_fagr_lespera() > Right.get_fagr_lespera())
+		return true;
+	return false;
 }

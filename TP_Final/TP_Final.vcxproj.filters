@@ -51,6 +51,9 @@
     <ClInclude Include="plasma.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="lista.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="paciente.cpp">
@@ -84,6 +87,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="lista.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

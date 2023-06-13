@@ -2,15 +2,15 @@
 
 #include "libreria.h"
 
-class registro {
+class cRegistro {
 
 public:
-	registro(string fluido_donar,string fecha_extr,float volumen, string cds);
-	~registro();
+	cRegistro(string fluido_donar,time_t fecha_extr,float volumen, string cds);
+	~cRegistro();
 
 private:
 	string fluido_donar;
-	string fecha_extr;
+	time_t fecha_extr;
 	float volumen;
 	string cds;
 };

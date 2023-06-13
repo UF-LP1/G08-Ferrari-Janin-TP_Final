@@ -1,7 +1,7 @@
 #include "donante.h"
 
 
-cDonante::cDonante(list<registro> Lista_registros, bool enf_sangre, bool tatuaje, bool donacion, string nombre, string fecha_nac, char sexo, string tel_contacto, int edad, float peso)
+cDonante::cDonante(list<cRegistro> Lista_registros, bool enf_sangre, bool tatuaje, bool donacion, string nombre, time_t fecha_nac, char sexo, string tel_contacto, int edad, float peso)
 	:cPaciente(nombre, fecha_nac, sexo, tel_contacto, edad, sexo)
 {
 	this->Lista_registros = Lista_registros;

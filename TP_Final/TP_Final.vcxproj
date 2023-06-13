@@ -132,6 +132,7 @@
     <ClInclude Include="donante.h" />
     <ClInclude Include="enumestado.h" />
     <ClInclude Include="fluido.h" />
+    <ClInclude Include="lista.h" />
     <ClInclude Include="medula.h" />
     <ClInclude Include="paciente.h" />
     <ClInclude Include="libreria.h" />
@@ -145,6 +146,7 @@
     <ClCompile Include="cds.cpp" />
     <ClCompile Include="donante.cpp" />
     <ClCompile Include="fluido.cpp" />
+    <ClCompile Include="lista.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="medula.cpp" />
     <ClCompile Include="paciente.cpp" />

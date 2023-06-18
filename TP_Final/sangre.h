@@ -6,6 +6,7 @@
 class cSangre : public cFluido{
 
 public:
-	cSangre();
+	cSangre(string tipo, char Rh, time_t fecha_max);
 	~cSangre();
+	void fecha_m();
 };

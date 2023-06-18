@@ -1,8 +1,11 @@
 #include "plasma.h"
 
-cPlasma::cPlasma(bool HLA_compatible) {
-	this->HLA_compatible = HLA_compatible;
+cPlasma::cPlasma(string tipo, char Rh, time_t fecha_max):cFluido(tipo, Rh, fecha_max) {
 }
 
 cPlasma::~cPlasma() {
+}
+
+void cPlasma::fecha_m() {
+	return;
 }

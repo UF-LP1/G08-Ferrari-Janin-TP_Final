@@ -13,10 +13,11 @@ public:
 	~cBSA();
 
 void set_cant_donaciones(int n_cant_don);
+cPaciente* match(cDonante* don);
+bool ProtocolodeTransplante(cDonante* donante, cReceptor* receptor);
 
 private:
 	int cant_donaciones;
-	//list<cReceptor*> Lista_receptores;
 	cLista<cCDS*> Lista_centrosds;
 };
 

@@ -3,12 +3,13 @@
 #include "libreria.h"
 #include "paciente.h"
 #include "registro.h"
+#include "fluido.h"
 
 class cDonante: public cPaciente {
 
 public:
-	cDonante(list<cRegistro> Lista_registros, bool enf_sangre, bool tatuaje, bool donacion, 
-		string nombre, time_t fecha_nac, char sexo, string tel_contacto, int edad, float peso);
+	cDonante(list<cRegistro> Lista_registros, bool enf_sangre, bool tatuaje, bool donacion,
+		string nombre, time_t fecha_nac, char sexo, string tel_contacto, int edad, float peso,cFluido* fluidos);
 	~cDonante();
 
 int get_edad();

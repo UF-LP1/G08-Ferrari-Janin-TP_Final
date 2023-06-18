@@ -4,6 +4,10 @@
 #include "receptor.h"
 #include "donante.h"
 #include "lista.h"
+#include "fluido.h"
+#include "sangre.h"
+#include "plasma.h"
+#include "medula.h"
 #include <list>
 
 class cCDS {
@@ -21,6 +25,12 @@ cLista<cDonante*> get_lista_donante();
 cLista<cReceptor*> get_lista_receptor();
 void ordenar_lista();
 bool miComparacion(cReceptor left, cReceptor Right);
+cLista<cReceptor*> lista_sangre();
+cLista<cReceptor*> lista_plasma();
+cLista<cReceptor*> lista_medula();
+cLista<cReceptor*> get_lista_receptores();
+cPaciente* buscar_paciente(cPaciente* p_buscar);
+
 
 private:
 	string nombre;

@@ -9,6 +9,7 @@ private:
 	bool HLA_compatible;
 
 public: 
-	cPlasma(bool HLA_compatible);
+	cPlasma(string tipo, char Rh, time_t fecha_max);
 	~cPlasma();
+	void fecha_m();
 };

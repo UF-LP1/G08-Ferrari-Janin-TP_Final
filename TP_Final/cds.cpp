@@ -73,3 +73,72 @@ bool cCDS:: miComparacion(cReceptor Left, cReceptor Right) {
 		return true;
 	return false;
 }
+
+cLista<cReceptor*> cCDS::lista_sangre()
+{
+	cLista<cReceptor*> lista;
+	list<cReceptor*>::iterator it = this->Lista_receptores.begin();
+
+	while (it != Lista_receptores.end())
+	{
+		cFluido* fluido_r = (*it)->get_fluido();
+		cFluido* aux = dynamic_cast<cSangre*>((*it)->get_fluido());
+		if (aux != nullptr)
+		{
+			lista + (*it);
+		}
+	}
+	return lista;
+}
+
+cLista<cReceptor*> cCDS::lista_plasma() 
+{
+	cLista<cReceptor*> lista;
+	list<cReceptor*>::iterator it = this->Lista_receptores.begin();
+
+	while (it != Lista_receptores.end())
+	{
+		cFluido* fluido_r = (*it)->get_fluido();
+		cFluido* aux = dynamic_cast<cPlasma*>((*it)->get_fluido());
+		if (aux != nullptr)
+		{
+			lista + (*it);
+		}
+	}
+	return lista;
+}
+
+cLista<cReceptor*> cCDS::lista_medula() 
+{
+	cLista<cReceptor*> lista;
+	list<cReceptor*>::iterator it = this->Lista_receptores.begin();
+
+	while (it != Lista_receptores.end())
+	{
+		cFluido* fluido_r = (*it)->get_fluido();
+		cFluido* aux = dynamic_cast<cMedula*>((*it)->get_fluido());
+		if (aux != nullptr)
+		{
+			lista + (*it);
+		}
+	}
+	return lista;
+}
+
+cLista<cReceptor*> cCDS::get_lista_receptores()
+{
+	ordenar_lista();
+	return this->Lista_receptores;
+}
+
+cPaciente* cCDS::buscar_paciente(cPaciente* p_buscar)
+{
+	cReceptor* aux_r = dynamic_cast<cReceptor*>(p_buscar);
+	if (aux_r != nullptr) {
+		list<cReceptor*>::iterator it = this->Lista_receptores.begin();
+		while (it != Lista_receptores.end())
+		{
+
+		}
+	}
+}

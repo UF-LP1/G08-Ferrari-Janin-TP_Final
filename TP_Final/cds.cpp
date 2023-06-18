@@ -142,3 +142,4 @@ cPaciente* cCDS::buscar_paciente(cPaciente* p_buscar)
 		}
 	}
 }
+

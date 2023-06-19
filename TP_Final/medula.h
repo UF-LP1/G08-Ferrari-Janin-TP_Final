@@ -6,7 +6,7 @@
 class cMedula : public cFluido {
 
 public:
-	cMedula(bool HLA_compatible, const int t_medula, tipo tipo_s, char Rh, time_t fecha_max);
+	cMedula(bool HLA_compatible, const int t_medula, tipo tipo_s, char Rh);
 	~cMedula();
 	bool fecha_m(time_t fecha_e);
 	string to_string();

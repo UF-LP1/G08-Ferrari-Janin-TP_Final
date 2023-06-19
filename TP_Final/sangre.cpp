@@ -1,6 +1,6 @@
 #include "sangre.h"
 
-cSangre::cSangre(const int t_sangre,tipo tipo_s, char Rh, time_t fecha_max):cFluido(tipo_s,Rh,fecha_max),t_sangre(42) 
+cSangre::cSangre(const int t_sangre,tipo tipo_s, char Rh):cFluido(tipo_s,Rh),t_sangre(42) 
 {
 }
 

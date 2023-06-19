@@ -9,7 +9,7 @@ private:
 	const int t_plasma;
 
 public: 
-	cPlasma(const int t_plasma,tipo tipo_s, char Rh, time_t fecha_max);
+	cPlasma(const int t_plasma,tipo tipo_s, char Rh);
 	~cPlasma();
 	bool fecha_m(time_t fecha_e);
 };

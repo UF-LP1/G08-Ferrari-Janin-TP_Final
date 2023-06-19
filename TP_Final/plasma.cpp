@@ -1,6 +1,6 @@
 #include "plasma.h"
 
-cPlasma::cPlasma(const int t_plasma, tipo tipo_s, char Rh, time_t fecha_max) :cFluido(tipo_s, Rh, fecha_max), t_plasma(365)
+cPlasma::cPlasma(const int t_plasma, tipo tipo_s, char Rh) :cFluido(tipo_s, Rh), t_plasma(365)
 {
 }
 

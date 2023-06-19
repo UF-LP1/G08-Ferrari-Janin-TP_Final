@@ -20,7 +20,7 @@ inline void cLista<T>::operator+(T& element)
 template<typename T>
 inline void cLista<T>::operator-(T& element)
 {
-	this->erase(element);
+	this->remove(element);
 }
 
 

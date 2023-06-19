@@ -60,7 +60,7 @@ cLista<cReceptor*> cCDS::get_lista_receptor(){
 
 void cCDS::ordenar_lista(cLista<cReceptor*> lista) 
 {
-	sort(lista.begin(), lista.end(), miComparacion);
+	sort(lista.begin(), lista.end(), &miComparacion);
 
 	return;
 }
@@ -183,7 +183,7 @@ string cCDS::to_string()
 
 void cCDS::imprimir()
 {
-	cout << &to_string << endl;
+	cout << to_string << endl;
 }
 
 string cCDS::get_partido()
@@ -196,5 +196,48 @@ string cCDS::get_provincia()
 	return this->provincia;
 }
 
+bool cCDS::realizar_transfusión(cDonante* donante,cReceptor* receptor)
+{
+
+	bool se_cumple = (donante->get_fluido())->fecha_m(donante->get_fecha_extraccion());
+	if (se_cumple == true)
+	{
+		srand(time(nullptr));
+		int resultado = rand() % 2;//genero un numero aleatorio entre 0 y 1
+		if (resultado == 0)//la transufsion fue exitosa
+		{
+			this->Lista_receptores - receptor;
+			return true;
+		}
+		else if (resultado == 1)//la tranfusion no fue exitosa
+		{
+			receptor->set_estado(inestable);
+			receptor->set_prioridad(1);
+			return false;
+		}
+	}
+	else
+		return false;
+}
+
+void cCDS::imprimir_lista_r()
+{
+	list<cReceptor*>::iterator it = Lista_receptores.begin();
+	while (it != Lista_receptores.end())
+	{
+		cout << *it << endl;
+		it++;
+	}
+}
+
+void cCDS::imprimir_lista_d()
+{
+	list<cDonante*>::iterator it = Lista_donantes.begin();
+	while (it != Lista_donantes.end())
+	{
+		cout << *it << endl;
+		it++;
+	}
+}
 
 

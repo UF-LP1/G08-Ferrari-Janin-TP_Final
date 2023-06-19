@@ -9,7 +9,7 @@ private:
 
 
 public:
-	cSangre(const int t_sangre,tipo tipo_s, char Rh, time_t fecha_max);
+	cSangre(const int t_sangre,tipo tipo_s, char Rh);
 	~cSangre();
 	bool fecha_m(time_t fecha_e);
 	string to_string();

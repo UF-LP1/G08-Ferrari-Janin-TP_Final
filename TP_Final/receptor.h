@@ -7,12 +7,14 @@
 class cReceptor :public cPaciente {
 
 public:
-	cReceptor(time_t fagr_lespera,int prioridad,enum e_estado estado,
-		string nombre, string DNI,time_t fecha_nac, char sexo, string tel_contacto, int edad, float peso,cFluido* fluidos);
+	cReceptor(int prioridad,enum e_estado estado,
+		string nombre, string DNI, char sexo, string tel_contacto, int edad, float peso,cFluido* fluidos);
 	~cReceptor();
 	void pp() {}
 	int get_prioridad();
+	void set_prioridad(int prioridad_nueva);
 	e_estado get_estado();
+	void set_estado(e_estado estado_nuevo);
 	time_t get_fagr_lespera();
 	string to_string(); 
 	void imprimir();

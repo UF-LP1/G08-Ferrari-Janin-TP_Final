@@ -12,7 +12,8 @@ public:
 	cBSA();
 	~cBSA();
 
-cPaciente* match(cDonante* don);
+void agregar_centro(cCDS* centro_agregar);
+cReceptor* match(cDonante* don);
 bool ProtocolodeTransplante(cDonante* donante, cReceptor* receptor);
 cLista<cReceptor*> lista_receptores(cDonante* don);
 void imprimir();

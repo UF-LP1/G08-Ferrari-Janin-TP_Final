@@ -8,8 +8,8 @@
 class cDonante: public cPaciente {
 
 public:
-	cDonante(list<cRegistro> Lista_registros, bool enf_sangre, bool tatuaje, bool donacion,
-		string nombre, string DNI,time_t fecha_nac, char sexo, string tel_contacto, int edad, float peso,cFluido* fluidos);
+	cDonante( bool enf_sangre, bool tatuaje, bool donacion,
+		string nombre, string DNI, char sexo, string tel_contacto, int edad, float peso,cFluido* fluidos);
 	~cDonante();
 
 int get_edad();
@@ -17,12 +17,13 @@ float get_peso();
 bool get_enfsangre();
 bool get_tatuaje();
 bool get_donacion();
+time_t get_fecha_extraccion();
 void imprimir() {}
 string to_string();
 void pp(){}
 
 private:
-	list<cRegistro> Lista_registros; //lista de registros de las donaciones que realiza
+	time_t fecha_extraccion;
 	bool enf_sangre;
 	bool tatuaje; //true si no se hizo tatuajes hace menos de dos meses
 				  //false si se hizo tatuajes hace menos de dos meses

@@ -1,11 +1,10 @@
 #include "fluido.h"
 
 
-cFluido::cFluido(tipo tipo_s, char Rh, time_t fecha_max)
+cFluido::cFluido(tipo tipo_s, char Rh)
 {
 	this->tipo_s = tipo_s;
 	this->Rh = Rh;
-	this->fecha_max = fecha_max;
 }
 
 cFluido::~cFluido() {

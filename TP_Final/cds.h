@@ -8,6 +8,7 @@
 #include "sangre.h"
 #include "plasma.h"
 #include "medula.h"
+#include <random>
 #include <list>
 
 class cCDS {
@@ -36,6 +37,9 @@ int buscar_prioridad_r(string DNI_buscar);//busco al receptor por su dni pq pued
 											//mismo nombre, pero no con el mismo dni
 string to_string();
 void imprimir();
+bool realizar_transfusión(cDonante* donante, cReceptor* receptor);
+void imprimir_lista_r();
+void imprimir_lista_d();
 
 private:
 	string nombre;

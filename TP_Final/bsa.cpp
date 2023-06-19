@@ -7,6 +7,12 @@ cBSA::cBSA(){
 cBSA::~cBSA() {
 }
 
+void cBSA::agregar_centro(cCDS* centro_agregar)
+{
+	Lista_centrosds + centro_agregar;
+	return;
+}
+
 bool cBSA::ProtocolodeTransplante(cDonante* donante, cReceptor* receptor)
 {
 	cCDS* centro_aux_don;
@@ -80,7 +86,7 @@ void cBSA::imprimir()
 		}
 }
 
-cPaciente* cBSA::match(cDonante* don)
+cReceptor* cBSA::match(cDonante* don)
 {
 	cReceptor* receptor_aux;
 	bool cumple_protocolo;

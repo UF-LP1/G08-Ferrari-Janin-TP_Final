@@ -2,5 +2,6 @@
 template <class T>
 ostream& operator<<(ostream& out, const T& element) //cLista<T>&
 {
-	// TODO: Insertar una instrucción "return" aquí
+	out << element << endl;
+	return out;
 }

@@ -21,4 +21,4 @@ void imprimir();
 private:
 	cLista<cCDS*> Lista_centrosds;
 };
-
+;

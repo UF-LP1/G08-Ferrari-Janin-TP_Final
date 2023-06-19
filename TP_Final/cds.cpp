@@ -1,5 +1,6 @@
 #include "cds.h"
 #include <list>
+#include <vector>
 
 cCDS::cCDS(string nombre, string direccion, string partido, string provincia, unsigned int telefono) {
 
@@ -60,20 +61,31 @@ cLista<cReceptor*> cCDS::get_lista_receptor(){
 
 void cCDS::ordenar_lista(cLista<cReceptor*>& lista) 
 {
-	//sort(lista.begin(), lista.end(), miComparacion);
-	lista.sort(&cCDS::miComparacion);
+	//sort(lista.begin(), lista.end(), miComparacion);--> ESTO NOS TIRO ERRORES POR TODOS LADOS
+	auto first = lista.begin();
+	auto last = lista.end();
+
+	for (auto i = first; i != last; ++i) {
+		for (auto j = std::next(i); j != last; ++j) {
+			if (miComparacion(*i,*j) == true) {
+				iter_swap(i, j);
+			}
+		}
+	}
 	return;
 }
 
-bool cCDS:: miComparacion( cReceptor Left,  cReceptor Right) {
-	if (Left.get_prioridad() < Right.get_prioridad())
+bool cCDS::miComparacion(cReceptor* Left, cReceptor* Right)
+{
+	if (Left->get_prioridad() < Right->get_prioridad())
 		return true;
-	if (Left.get_estado() > Right.get_estado())
+	if (Left->get_estado() > Right->get_estado())
 		return true;
-	if (Left.get_fagr_lespera() > Right.get_fagr_lespera())
+	if (Left->get_fagr_lespera() > Right->get_fagr_lespera())
 		return true;
 	return false;
 }
+
 
 cLista<cReceptor*> cCDS::lista_sangre()
 {
@@ -196,7 +208,7 @@ string cCDS::get_provincia()
 	return this->provincia;
 }
 
-bool cCDS::realizar_transfusión(cDonante* donante,cReceptor* receptor)
+bool cCDS::realizar_transfusión( cDonante* donante,cReceptor* receptor)
 {
 
 	bool se_cumple = (donante->get_fluido())->fecha_m(donante->get_fecha_extraccion());
@@ -206,7 +218,7 @@ bool cCDS::realizar_transfusión(cDonante* donante,cReceptor* receptor)
 		int resultado = rand() % 2;//genero un numero aleatorio entre 0 y 1
 		if (resultado == 0)//la transufsion fue exitosa
 		{
-			this->Lista_receptores - receptor;
+			this->Lista_receptores-receptor;
 			return true;
 		}
 		else if (resultado == 1)//la tranfusion no fue exitosa

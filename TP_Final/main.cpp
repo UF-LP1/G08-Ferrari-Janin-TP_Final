@@ -29,18 +29,26 @@ int main()
 	cMedula medula2(true, 1, B, '+');
 	cMedula medula3(true, 1, B, '+');
 
-	cDonante Emilia (false, false, false, "Emilia Janin", "44979799", 'f', "2234546336", 20, 60.0, &sangre1);
-	cDonante Isabella(false, false, false, "Isabella Ferrari", "5436346", 'f', "82989029", 19, 55.43, &sangre2);
-	cDonante Delfina(false, false, false, "Delfina Hanisch", "26253825", 'f', "2826236", 19, 74.2, &plasma1);
-	cDonante Saul(true, true, false, "Saul Lezama", "4487248", 'm', "3735225382", 19,67.0, &plasma2);
-	cDonante Maria(false, false, false, "Maria Durand", "28689334", 'f', "352635", 19, 67.0, &medula1);
-	cDonante CamilaB(false, false, true, "Camila Bngiovanni", "6362893", 'f', "365252892", 19, 89.0, &medula2);
+	tm fecha_ex{};
+	fecha_ex.tm_year = 123;//2023-1900
+	fecha_ex.tm_mon = 5;//Junio(0-11)
+	fecha_ex.tm_mday = 20;
 
-	cReceptor Renata(1, inestable, "Renata Stasi", "4905905", 'f', "372358", 19, 45.0,&sangre3);
-	cReceptor Mariano(1, estable, "Mariano Borderia", "4789483", 'm', "363269", 19, 68.9, &sangre5);
-	cReceptor CamilaZ(2,estable, "Camila Zavidowski", "5436346", 'f', "82989029", 19, 56.9, &sangre4);
-	cReceptor Florencia(3, estable, "Florencia Velo Bares", "67845734", 'f', "7271728", 19, 45.0, &plasma3);
-	cReceptor Federico(2, inestable, "Federico Fioriti", "3276328", 'm', "78293698", 19, 60.0, &medula3);
+	time_t fecha_extraccion = mktime(&fecha_ex);//convierto mi fecha de extraccion de tm a t_time
+	//supongo que a todos los donantes tienen la misma fecha de extraccion
+
+	cDonante Emilia (fecha_extraccion,false, false, false, "Emilia Janin", "44979799","20/02/2003", 'f', "2234546336", 20, 60.0, &sangre1);
+	cDonante Isabella(fecha_extraccion,false, false, false, "Isabella Ferrari", "5436346","8/10/2003", 'f', "82989029", 19, 55.43, &sangre2);
+	cDonante Delfina(fecha_extraccion,false, false, false, "Delfina Hanisch", "26253825","29/02/2004", 'f', "2826236", 19, 74.2, &plasma1);
+	cDonante Saul(fecha_extraccion,true, true, false, "Saul Lezama", "4487248", "18/09/2003", 'm', "3735225382", 19, 67.0, &plasma2);
+	cDonante Maria(fecha_extraccion,false, false, false, "Maria Durand", "28689334", "3/07/2003", 'f', "352635", 19, 67.0, &medula1);
+	cDonante CamilaB(fecha_extraccion,false, false, true, "Camila Bngiovanni", "6362893", "20/02/2004", 'f', "365252892", 19, 89.0, &medula2);
+
+	cReceptor Renata(1, inestable, "Renata Stasi", "4905905", "11/03/2004", 'f', "372358", 19, 45.0, &sangre3);
+	cReceptor Mariano(1, estable, "Mariano Borderia", "4789483", "08/12/2003", 'm', "363269", 19, 68.9, &sangre5);
+	cReceptor CamilaZ(2,estable, "Camila Zavidowski", "5436346","05/03/2004", 'f', "82989029", 19, 56.9, &sangre4);
+	cReceptor Florencia(3, estable, "Florencia Velo Bares", "67845734", "28/07/2003", 'f', "7271728", 19, 45.0, &plasma3);
+	cReceptor Federico(2, inestable, "Federico Fioriti", "3276328", "26/12/2003", 'm', "78293698", 19, 60.0, &medula3);
 
 	centro_N1.agregar_lista(&Emilia);
 	centro_N1.agregar_lista(&Renata);

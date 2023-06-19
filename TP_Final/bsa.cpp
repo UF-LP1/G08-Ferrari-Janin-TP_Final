@@ -15,8 +15,8 @@ void cBSA::agregar_centro(cCDS* centro_agregar)
 
 bool cBSA::ProtocolodeTransplante(cDonante* donante, cReceptor* receptor)
 {
-	cCDS* centro_aux_don;
-	cCDS* centro_aux_rec;
+	cCDS* centro_aux_don = nullptr;
+	cCDS* centro_aux_rec = nullptr;
 	bool d, r = false;
 	list<cCDS*>::iterator it = Lista_centrosds.begin();
 	while (it != Lista_centrosds.end() && d == false && r == false)//el while va a terminar cuando se encuentre

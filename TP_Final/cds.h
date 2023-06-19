@@ -24,7 +24,7 @@ void agregar_lista(cPaciente* paciente);
 
 cLista<cDonante*> get_lista_donante();
 cLista<cReceptor*> get_lista_receptor();
-void ordenar_lista(cLista<cReceptor*> lista);
+void ordenar_lista(cLista<cReceptor*>& lista);
 bool miComparacion(cReceptor left, cReceptor Right);
 string get_partido();
 string get_provincia();

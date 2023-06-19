@@ -1,6 +1,6 @@
 #include "paciente.h"
 
-cPaciente::cPaciente(string nombre, string DNI,time_t fecha_nac, char sexo, string tel_contacto, int edad, float peso, cFluido* fluidos) {
+cPaciente::cPaciente(string nombre, string DNI,string fecha_nac, char sexo, string tel_contacto, int edad, float peso, cFluido* fluidos) {
 
 	this->nombre = nombre;
 	this->DNI = DNI;
@@ -25,9 +25,6 @@ string cPaciente::get_DNI()
 	return this->DNI;
 }
 
-string cPaciente::to_string()
-{
 
-}
 
 

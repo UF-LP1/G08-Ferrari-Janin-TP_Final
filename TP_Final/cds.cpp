@@ -58,14 +58,14 @@ cLista<cReceptor*> cCDS::get_lista_receptor(){
 }
 
 
-void cCDS::ordenar_lista(cLista<cReceptor*> lista) 
+void cCDS::ordenar_lista(cLista<cReceptor*>& lista) 
 {
-	sort(lista.begin(), lista.end(), &miComparacion);
-
+	//sort(lista.begin(), lista.end(), miComparacion);
+	lista.sort(&cCDS::miComparacion);
 	return;
 }
 
-bool cCDS:: miComparacion(cReceptor Left, cReceptor Right) {
+bool cCDS:: miComparacion( cReceptor Left,  cReceptor Right) {
 	if (Left.get_prioridad() < Right.get_prioridad())
 		return true;
 	if (Left.get_estado() > Right.get_estado())
@@ -183,7 +183,7 @@ string cCDS::to_string()
 
 void cCDS::imprimir()
 {
-	cout << to_string << endl;
+	cout << this->to_string() << endl;
 }
 
 string cCDS::get_partido()

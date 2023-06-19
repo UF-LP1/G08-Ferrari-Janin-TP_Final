@@ -9,15 +9,15 @@
 class cBSA {
 
 public:
-	cBSA(int cant_donaciones);
+	cBSA();
 	~cBSA();
 
-void set_cant_donaciones(int n_cant_don);
 cPaciente* match(cDonante* don);
 bool ProtocolodeTransplante(cDonante* donante, cReceptor* receptor);
+cLista<cReceptor*> lista_receptores(cDonante* don);
+void imprimir();
 
 private:
-	int cant_donaciones;
 	cLista<cCDS*> Lista_centrosds;
 };
 

@@ -58,8 +58,9 @@ cLista<cReceptor*> cCDS::get_lista_receptor(){
 }
 
 
-void cCDS::ordenar_lista() {
-	sort(Lista_receptores.begin(), Lista_receptores.end(), miComparacion);
+void cCDS::ordenar_lista(cLista<cReceptor*> lista) 
+{
+	sort(lista.begin(), lista.end(), miComparacion);
 
 	return;
 }
@@ -127,7 +128,7 @@ cLista<cReceptor*> cCDS::lista_medula()
 
 cLista<cReceptor*> cCDS::get_lista_receptores()
 {
-	ordenar_lista();
+	ordenar_lista(Lista_receptores);
 	return this->Lista_receptores;
 }
 
@@ -138,8 +139,62 @@ cPaciente* cCDS::buscar_paciente(cPaciente* p_buscar)
 		list<cReceptor*>::iterator it = this->Lista_receptores.begin();
 		while (it != Lista_receptores.end())
 		{
-
+			if (*it == aux_r)
+				return *it;
+			it++;
 		}
 	}
+	cDonante* aux_d = dynamic_cast<cDonante*>(p_buscar);
+	if (aux_d != nullptr) {
+		list<cDonante*>::iterator it = this->Lista_donantes.begin();
+		while (it != Lista_donantes.end())
+		{
+			if (*it == aux_d)
+				return *it;
+			it++;
+		}
+	}
+	return nullptr;
 }
+
+int cCDS::buscar_prioridad_r(string DNI_buscar)
+{
+	list<cReceptor*>::iterator it = Lista_receptores.begin();
+	while (it != Lista_receptores.end())
+	{
+		if ((*it)->get_DNI() == DNI_buscar)
+		{
+			int aux = (*it)->get_prioridad();
+			return aux;
+		}
+			it++;
+	}
+	return 0;//como la prioridad de un paciente va del 1 al 5, si devuelve 0, significa 
+			//que no se encontro al paciente
+}
+
+string cCDS::to_string()
+{
+	stringstream salida;
+	salida << "Nombre:" << this->nombre << ". Direccion:" << this->direccion << ". Partido:" << this->partido <<
+		". Provincia:" << this->provincia << ". Telefono:" << this->telefono;
+	return salida.str();
+}
+
+void cCDS::imprimir()
+{
+	cout << &to_string << endl;
+}
+
+string cCDS::get_partido()
+{
+	return this->partido;
+}
+
+string cCDS::get_provincia()
+{
+	return this->provincia;
+}
+
+
 

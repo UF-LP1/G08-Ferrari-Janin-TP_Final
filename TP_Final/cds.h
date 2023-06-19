@@ -23,14 +23,19 @@ void agregar_lista(cPaciente* paciente);
 
 cLista<cDonante*> get_lista_donante();
 cLista<cReceptor*> get_lista_receptor();
-void ordenar_lista();
+void ordenar_lista(cLista<cReceptor*> lista);
 bool miComparacion(cReceptor left, cReceptor Right);
+string get_partido();
+string get_provincia();
 cLista<cReceptor*> lista_sangre();
 cLista<cReceptor*> lista_plasma();
 cLista<cReceptor*> lista_medula();
 cLista<cReceptor*> get_lista_receptores();
 cPaciente* buscar_paciente(cPaciente* p_buscar);
-
+int buscar_prioridad_r(string DNI_buscar);//busco al receptor por su dni pq pueden haber dos personas con el 
+											//mismo nombre, pero no con el mismo dni
+string to_string();
+void imprimir();
 
 private:
 	string nombre;

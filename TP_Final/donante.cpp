@@ -1,8 +1,8 @@
 #include "donante.h"
 
 
-cDonante::cDonante(list<cRegistro> Lista_registros, bool enf_sangre, bool tatuaje, bool donacion, string nombre, time_t fecha_nac, char sexo, string tel_contacto, int edad, float peso, cFluido* fluidos)
-	:cPaciente (nombre, fecha_nac, sexo, tel_contacto, edad, sexo, fluidos)
+cDonante::cDonante(list<cRegistro> Lista_registros, bool enf_sangre, bool tatuaje, bool donacion, string nombre, string DNI,time_t fecha_nac, char sexo, string tel_contacto, int edad, float peso, cFluido* fluidos)
+	:cPaciente (nombre, DNI,fecha_nac, sexo, tel_contacto, edad, sexo, fluidos)
 {
 	this->Lista_registros = Lista_registros;
 	this->enf_sangre = enf_sangre;
@@ -32,3 +32,18 @@ bool cDonante::get_tatuaje() {
 bool cDonante::get_donacion() {
 	return this->donacion;
 }
+
+string cDonante::to_string()
+{
+	stringstream salida;
+	cout << "Posee enfermedades que sean trandsmitadas por sangre:" << this->enf_sangre << ". Se ha relizado un tatuaje hace menos de dos meses:"
+		<< this->tatuaje << ". Ha realizado donaciones hace menos de dos meses: " << this->donacion;
+	return salida.str();
+}
+
+void cDonante::imprimir()
+{
+	cout << to_string() << endl;
+	return;
+}
+

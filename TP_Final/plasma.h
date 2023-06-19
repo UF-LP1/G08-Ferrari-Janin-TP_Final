@@ -6,10 +6,10 @@
 class cPlasma : public cFluido{
 
 private:
-	bool HLA_compatible;
+	const int t_plasma;
 
 public: 
-	cPlasma(string tipo, char Rh, time_t fecha_max);
+	cPlasma(const int t_plasma,tipo tipo_s, char Rh, time_t fecha_max);
 	~cPlasma();
-	void fecha_m();
+	bool fecha_m(time_t fecha_e);
 };

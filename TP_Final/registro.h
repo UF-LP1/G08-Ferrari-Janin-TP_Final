@@ -1,16 +1,18 @@
 #pragma once
 
 #include "libreria.h"
+#include "fluido.h"
 
 class cRegistro {
 
 public:
-	cRegistro(string fluido_donar,time_t fecha_extr,float volumen, string cds);
+	cRegistro(cFluido* fluido_donar,time_t fecha_extr,float volumen);
 	~cRegistro();
+	string to_string();
+	void imprimir();
 
 private:
-	string fluido_donar;
+	cFluido* fluido_donar;
 	time_t fecha_extr;
 	float volumen;
-	string cds;
 };

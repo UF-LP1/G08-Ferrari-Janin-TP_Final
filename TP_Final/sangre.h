@@ -4,9 +4,14 @@
 #include "fluido.h"
 
 class cSangre : public cFluido{
+private:
+	const int t_sangre;
+
 
 public:
-	cSangre(string tipo, char Rh, time_t fecha_max);
+	cSangre(const int t_sangre,tipo tipo_s, char Rh, time_t fecha_max);
 	~cSangre();
-	void fecha_m();
+	bool fecha_m(time_t fecha_e);
+	string to_string();
+	void imprimir();
 };

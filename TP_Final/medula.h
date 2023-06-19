@@ -3,13 +3,16 @@
 #include "libreria.h"
 #include "fluido.h"
 
-class cMedula: public cFluido {
+class cMedula : public cFluido {
 
-public: 
-	cMedula(bool HLA_compatible, string tipo, char Rh, time_t fecha_max);
+public:
+	cMedula(bool HLA_compatible, const int t_medula, tipo tipo_s, char Rh, time_t fecha_max);
 	~cMedula();
-	void fecha_m();
+	bool fecha_m(time_t fecha_e);
+	string to_string();
+	void imprimir();
 
 private:
 	bool HLA_compatible;
-}
+	const int t_medula;
+};

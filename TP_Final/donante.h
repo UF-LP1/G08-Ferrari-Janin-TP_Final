@@ -19,7 +19,7 @@ bool get_donacion();
 time_t get_fecha_extraccion();
 void imprimir();
 string to_string();
-void pp(){}
+
 
 private:
 	time_t fecha_extraccion;

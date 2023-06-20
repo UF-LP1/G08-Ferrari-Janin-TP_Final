@@ -9,7 +9,6 @@ class cReceptor :public cPaciente {
 public:
 	cReceptor(int prioridad,enum e_estado estado,string nombre, string DNI, string fecha_nac,char sexo, string tel_contacto, int edad, float peso,cFluido* fluidos);
 	~cReceptor();
-	void pp() {}
 	int get_prioridad();
 	void set_prioridad(int prioridad_nueva);
 	e_estado get_estado();

@@ -8,7 +8,7 @@ class cPaciente {
 public:
 	cPaciente(string nombre, string DNI, string fecha_nac, char sexo, string tel_contacto, int edad, float peso, cFluido* fluidos);
 	~cPaciente();
-	virtual void pp() = 0;
+	virtual void imprimir() = 0;
 	cFluido* get_fluido();
 	string get_DNI();
 	

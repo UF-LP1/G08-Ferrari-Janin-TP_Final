@@ -124,5 +124,5 @@ int main()
 		cout << "Hubo complicaciones con la transfusion, ahora pasa al frente de la lista de espera" << endl;
 	}
 
-	return;
+	return 0;
 }

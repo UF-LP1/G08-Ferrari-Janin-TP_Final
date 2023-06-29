@@ -260,16 +260,19 @@ void cCDS::imprimir_lista_d()
 	}
 }
 
-void cCDS::operator-(cReceptor& receptor_eliminar)
+/*
+void operator-(list<cReceptor*>& Lista_receptor, cReceptor& receptor_eliminar)
 {
-	list<cReceptor*>::iterator it = this->Lista_receptores.begin();
-	while (it != this->Lista_receptores.end())
+	list<cReceptor*>::iterator it =Lista_receptor.begin();
+	while (it != Lista_receptor.end())
 	{
 		if (*(*it) == receptor_eliminar)
 		{
-			this->Lista_receptores.erase(it);
+			Lista_receptor.erase(it);
 		}
 		it++;
 	}
 	return;
 }
+*/
+

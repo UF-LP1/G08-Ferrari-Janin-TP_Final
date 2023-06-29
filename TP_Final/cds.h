@@ -42,7 +42,6 @@ public:
 	bool realizar_transfusion(cDonante* donante);
 	void imprimir_lista_r();
 	void imprimir_lista_d();
-	void operator-(cReceptor& receptor_eliminar);
 
 private:
 	string nombre;
@@ -55,3 +54,4 @@ private:
 	static int cant_transfusiones;
 };
 
+//void operator-(list<cReceptor*>& Lista_receptor, ,cReceptor& receptor_eliminar);

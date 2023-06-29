@@ -1,6 +1,6 @@
 #include "paciente.h"
 
-cPaciente::cPaciente(string nombre, string DNI,string fecha_nac, char sexo, string tel_contacto, int edad, float peso, cFluido* fluidos) {
+cPaciente::cPaciente(string nombre, string DNI, string fecha_nac, char sexo, string tel_contacto, int edad, float peso, cFluido* fluidos) {
 
 	this->nombre = nombre;
 	this->DNI = DNI;
@@ -24,6 +24,17 @@ string cPaciente::get_DNI()
 {
 	return this->DNI;
 }
+
+bool cPaciente::operator==(cPaciente* p_verificar)
+{
+	if (this->nombre == p_verificar->nombre && this->DNI == p_verificar->DNI)
+		return true;
+	else
+		return false;
+}
+
+
+
 
 
 

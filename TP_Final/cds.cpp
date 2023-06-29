@@ -2,6 +2,9 @@
 #include <list>
 #include <vector>
 
+
+int cCDS::cant_transfusiones = 0;
+
 cCDS::cCDS(string nombre, string direccion, string partido, string provincia, unsigned int telefono) {
 
 	this->nombre = nombre;
@@ -50,16 +53,15 @@ void cCDS::agregar_lista(cPaciente* paciente)
 	}
 }
 
-cLista<cDonante*> cCDS::get_lista_donante(){
+cLista<cDonante*> cCDS::get_lista_donante() {
 	return this->Lista_donantes;
 }
 
-cLista<cReceptor*> cCDS::get_lista_receptor(){
+cLista<cReceptor*> cCDS::get_lista_receptor() {
 	return this->Lista_receptores;
 }
 
-
-void cCDS::ordenar_lista(cLista<cReceptor*>& lista) 
+void cCDS::ordenar_lista(cLista<cReceptor*>& lista)
 {
 	//sort(lista.begin(), lista.end(), miComparacion);--> ESTO NOS TIRO ERRORES POR TODOS LADOS
 	auto first = lista.begin();
@@ -67,7 +69,7 @@ void cCDS::ordenar_lista(cLista<cReceptor*>& lista)
 
 	for (auto i = first; i != last; ++i) {
 		for (auto j = std::next(i); j != last; ++j) {
-			if (miComparacion(*i,*j) == true) {
+			if (miComparacion(*i, *j) == true) {
 				iter_swap(i, j);
 			}
 		}
@@ -86,7 +88,6 @@ bool cCDS::miComparacion(cReceptor* Left, cReceptor* Right)
 	return false;
 }
 
-
 cLista<cReceptor*> cCDS::lista_sangre()
 {
 	cLista<cReceptor*> lista;
@@ -104,7 +105,7 @@ cLista<cReceptor*> cCDS::lista_sangre()
 	return lista;
 }
 
-cLista<cReceptor*> cCDS::lista_plasma() 
+cLista<cReceptor*> cCDS::lista_plasma()
 {
 	cLista<cReceptor*> lista;
 	list<cReceptor*>::iterator it = this->Lista_receptores.begin();
@@ -121,7 +122,7 @@ cLista<cReceptor*> cCDS::lista_plasma()
 	return lista;
 }
 
-cLista<cReceptor*> cCDS::lista_medula() 
+cLista<cReceptor*> cCDS::lista_medula()
 {
 	cLista<cReceptor*> lista;
 	list<cReceptor*>::iterator it = this->Lista_receptores.begin();
@@ -179,10 +180,10 @@ int cCDS::buscar_prioridad_r(string DNI_buscar)
 			int aux = (*it)->get_prioridad();
 			return aux;
 		}
-			it++;
+		it++;
 	}
 	return 0;//como la prioridad de un paciente va del 1 al 5, si devuelve 0, significa 
-			//que no se encontro al paciente
+	//que no se encontro al paciente
 }
 
 string cCDS::to_string()
@@ -208,28 +209,35 @@ string cCDS::get_provincia()
 	return this->provincia;
 }
 
-bool cCDS::realizar_transfusión( cDonante* donante,cReceptor* receptor)
+bool cCDS::realizar_transfusion(cDonante* donante)
 {
-
-	bool se_cumple = (donante->get_fluido())->fecha_m(donante->get_fecha_extraccion());
-	if (se_cumple == true)
-	{
-		srand(time(nullptr));
-		int resultado = rand() % 2;//genero un numero aleatorio entre 0 y 1
-		if (resultado == 0)//la transufsion fue exitosa
-		{
-			this->Lista_receptores-receptor;
-			return true;
-		}
-		else if (resultado == 1)//la tranfusion no fue exitosa
-		{
-			receptor->set_estado(inestable);
-			receptor->set_prioridad(1);
-			return false;
-		}
-	}
+	cBSA banco;
+	cReceptor* rec_match = banco.match(donante);
+	if (rec_match == nullptr)
+		throw invalid_argument("No se encontro un match");
 	else
-		return false;
+	{
+		bool se_cumple = (donante->get_fluido())->fecha_m(donante->get_fecha_extraccion());
+		if (se_cumple == true)
+		{
+			srand(time(nullptr));
+			int resultado = rand() % 2;//genero un numero aleatorio entre 0 y 1
+			if (resultado == 0)//la transufsion fue exitosa
+			{
+				this->Lista_receptores - rec_match;
+				cant_transfusiones++;
+				return true;
+			}
+			else if (resultado == 1)//la tranfusion no fue exitosa
+			{
+				rec_match->set_estado(inestable);
+				rec_match->set_prioridad(1);
+				return false;
+			}
+		}
+		else
+			return false;
+	}
 }
 
 void cCDS::imprimir_lista_r()
@@ -252,4 +260,16 @@ void cCDS::imprimir_lista_d()
 	}
 }
 
-
+void cCDS::operator-(cReceptor& receptor_eliminar)
+{
+	list<cReceptor*>::iterator it = this->Lista_receptores.begin();
+	while (it != this->Lista_receptores.end())
+	{
+		if (*(*it) == receptor_eliminar)
+		{
+			this->Lista_receptores.erase(it);
+		}
+		it++;
+	}
+	return;
+}

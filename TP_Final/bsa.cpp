@@ -1,7 +1,7 @@
 #include "bsa.h"
 #include <list>
 
-cBSA::cBSA(){
+cBSA::cBSA() {
 }
 
 cBSA::~cBSA() {
@@ -78,12 +78,12 @@ cLista<cReceptor*> cBSA::lista_receptores(cDonante* don)
 
 void cBSA::imprimir()
 {
-		list<cCDS*>::iterator it = this->Lista_centrosds.begin();
-		while (it != Lista_centrosds.end())
-		{
-			cout << *it; //*(*it)
-			it++;
-		}
+	list<cCDS*>::iterator it = this->Lista_centrosds.begin();
+	while (it != Lista_centrosds.end())
+	{
+		cout << *it; //*(*it)
+		it++;
+	}
 }
 
 cReceptor* cBSA::match(cDonante* don)
@@ -93,7 +93,7 @@ cReceptor* cBSA::match(cDonante* don)
 	cLista<cReceptor*> lista = lista_receptores(don);
 	list<cReceptor*>::iterator it = lista.begin();
 	while (it != lista.end())// como la lista ya esta ordenada, solo tengo que recorrerla hasta que 
-							//aparezca un receptor que cumpla el protocolo de transplante
+		//aparezca un receptor que cumpla el protocolo de transplante
 	{
 		receptor_aux = *it;
 		cumple_protocolo = ProtocolodeTransplante(don, receptor_aux);
@@ -103,6 +103,7 @@ cReceptor* cBSA::match(cDonante* don)
 	}
 	return nullptr;
 }
+
 
 
 

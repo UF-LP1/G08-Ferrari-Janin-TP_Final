@@ -21,7 +21,7 @@ float cDonante::get_peso() {
 	return this->peso;
 }
 
-bool cDonante:: get_enfsangre() {
+bool cDonante::get_enfsangre() {
 	return this->enf_sangre;
 }
 
@@ -41,15 +41,15 @@ time_t cDonante::get_fecha_extraccion()
 string cDonante::to_string()
 {
 	stringstream salida;
-	cout << "Nombre:"<<this->nombre<<". DNI:"<<this->DNI<<". Sexo:"<< this->sexo<<". Telefono de contacto:"<<this->tel_contacto<<". Edad:"<<this->edad<<". Peso: "<<this->peso << 
-		". Fluido que dona: "<<this->fluidos << ". Posee enfermedades que sean trandsmitadas por sangre:" << this->enf_sangre << ". Se ha relizado un tatuaje hace menos de dos meses:" <<
+	cout << "Nombre:" << this->nombre << ". DNI:" << this->DNI << ". Sexo:" << this->sexo << ". Telefono de contacto:" << this->tel_contacto << ". Edad:" << this->edad << ". Peso: " << this->peso <<
+		". Fluido que dona: " << this->fluidos << ". Posee enfermedades que sean trandsmitadas por sangre:" << this->enf_sangre << ". Se ha relizado un tatuaje hace menos de dos meses:" <<
 		this->tatuaje << ". Ha realizado donaciones hace menos de dos meses: " << this->donacion << endl;
 	return salida.str();
 }
 
 void cDonante::imprimir()
 {
-		cout << this->to_string() << endl;
-		return;
+	cout << this->to_string() << endl;
+	return;
 }
 

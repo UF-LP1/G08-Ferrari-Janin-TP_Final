@@ -1,6 +1,6 @@
 #include "medula.h"
 
-cMedula::cMedula (bool HLA_compatible, const int t_medula,tipo tipo_s, char Rh) : cFluido(tipo_s, Rh), t_medula(1)
+cMedula::cMedula(bool HLA_compatible, const int t_medula, tipo tipo_s, char Rh) : cFluido(tipo_s, Rh), t_medula(1)
 {
 	this->HLA_compatible = HLA_compatible;
 }

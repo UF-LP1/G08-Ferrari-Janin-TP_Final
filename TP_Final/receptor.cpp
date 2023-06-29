@@ -1,8 +1,8 @@
 #include "receptor.h"
 
-cReceptor::cReceptor( int prioridad, enum e_estado estado,
-	string nombre, string DNI, string fecha_nac,char sexo, string tel_contacto, int edad, float peso, cFluido* fluidos)
-	:cPaciente(nombre, DNI, fecha_nac,sexo, tel_contacto, edad, sexo, fluidos)
+cReceptor::cReceptor(int prioridad, enum e_estado estado,
+	string nombre, string DNI, string fecha_nac, char sexo, string tel_contacto, int edad, float peso, cFluido* fluidos)
+	:cPaciente(nombre, DNI, fecha_nac, sexo, tel_contacto, edad, sexo, fluidos)
 {
 
 	this->prioridad = prioridad;
@@ -41,7 +41,7 @@ string cReceptor::to_string()
 {
 	stringstream salida;
 	salida << "Nombre:" << this->nombre << ". DNI:" << this->DNI << ". Sexo:" << this->sexo << ". Telefono de contacto:" << this->tel_contacto << ". Edad:" << this->edad << ". Peso: " << this->peso <<
-		". Fluido que dona: " << this->fluidos <<". Fecha agregado a la lista de espera: " << this->fagr_lespera << ". Prioridad: " <<
+		". Fluido que dona: " << this->fluidos << ". Fecha agregado a la lista de espera: " << this->fagr_lespera << ". Prioridad: " <<
 		this->prioridad << ". Estado:" << this->estado << endl;
 	return salida.str();
 }
@@ -50,4 +50,12 @@ void cReceptor::imprimir()
 {
 	cout << to_string() << endl;
 	return;
+}
+
+bool cReceptor::operator==(const cReceptor& r_verificar)
+{
+	if (this->nombre == r_verificar.nombre && this->DNI == r_verificar.DNI)
+		return true;
+	else
+		return false;
 }

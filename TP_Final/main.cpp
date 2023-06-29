@@ -17,10 +17,10 @@ int main()
 	BancoSA.agregar_centro(&centro_N5);
 
 
-	cSangre sangre1(42,A,'+');
+	cSangre sangre1(42, A, '+');
 	cSangre sangre2(42, B, '-');
 	cSangre sangre3(42, AB, '+');
-	cSangre sangre4(42,O, '-');
+	cSangre sangre4(42, O, '-');
 	cSangre sangre5(42, AB, '+');
 	cPlasma plasma1(365, A, '-');
 	cPlasma plasma2(365, O, '-');
@@ -37,16 +37,16 @@ int main()
 	time_t fecha_extraccion = mktime(&fecha_ex);//convierto mi fecha de extraccion de tm a t_time
 	//supongo que a todos los donantes tienen la misma fecha de extraccion
 
-	cDonante Emilia (fecha_extraccion,false, false, false, "Emilia Janin", "44979799","20/02/2003", 'f', "2234546336", 20, 60.0, &sangre1);
-	cDonante Isabella(fecha_extraccion,false, false, false, "Isabella Ferrari", "5436346","8/10/2003", 'f', "82989029", 19, 55.43, &sangre2);
-	cDonante Delfina(fecha_extraccion,false, false, false, "Delfina Hanisch", "26253825","29/02/2004", 'f', "2826236", 19, 74.2, &plasma1);
-	cDonante Saul(fecha_extraccion,true, true, false, "Saul Lezama", "4487248", "18/09/2003", 'm', "3735225382", 19, 67.0, &plasma2);
-	cDonante Maria(fecha_extraccion,false, false, false, "Maria Durand", "28689334", "3/07/2003", 'f', "352635", 19, 67.0, &medula1);
-	cDonante CamilaB(fecha_extraccion,false, false, true, "Camila Bngiovanni", "6362893", "20/02/2004", 'f', "365252892", 19, 89.0, &medula2);
+	cDonante Emilia(fecha_extraccion, false, false, false, "Emilia Janin", "44979799", "20/02/2003", 'f', "2234546336", 20, 60.0, &sangre1);
+	cDonante Isabella(fecha_extraccion, false, false, false, "Isabella Ferrari", "5436346", "8/10/2003", 'f', "82989029", 19, 55.43, &sangre2);
+	cDonante Delfina(fecha_extraccion, false, false, false, "Delfina Hanisch", "26253825", "29/02/2004", 'f', "2826236", 19, 74.2, &plasma1);
+	cDonante Saul(fecha_extraccion, true, true, false, "Saul Lezama", "4487248", "18/09/2003", 'm', "3735225382", 19, 67.0, &plasma2);
+	cDonante Maria(fecha_extraccion, false, false, false, "Maria Durand", "28689334", "3/07/2003", 'f', "352635", 19, 67.0, &medula1);
+	cDonante CamilaB(fecha_extraccion, false, false, true, "Camila Bngiovanni", "6362893", "20/02/2004", 'f', "365252892", 19, 89.0, &medula2);
 
 	cReceptor Renata(1, inestable, "Renata Stasi", "4905905", "11/03/2004", 'f', "372358", 19, 45.0, &sangre3);
 	cReceptor Mariano(1, estable, "Mariano Borderia", "4789483", "08/12/2003", 'm', "363269", 19, 68.9, &sangre5);
-	cReceptor CamilaZ(2,estable, "Camila Zavidowski", "5436346","05/03/2004", 'f', "82989029", 19, 56.9, &sangre4);
+	cReceptor CamilaZ(2, estable, "Camila Zavidowski", "5436346", "05/03/2004", 'f', "82989029", 19, 56.9, &sangre4);
 	cReceptor Florencia(3, estable, "Florencia Velo Bares", "67845734", "28/07/2003", 'f', "7271728", 19, 45.0, &plasma3);
 	cReceptor Federico(2, inestable, "Federico Fioriti", "3276328", "26/12/2003", 'm', "78293698", 19, 60.0, &medula3);
 
@@ -75,8 +75,23 @@ int main()
 	centro_N5.imprimir_lista_d();
 	centro_N5.imprimir_lista_r();
 
-	cReceptor* paciente_match1 = BancoSA.match(&Emilia);
-	bool trans_realizada1 = centro_N1.realizar_transfusión(&Emilia, paciente_match1);
+	bool trans_realizada1 = false;
+	bool trans_realizada2 = false;
+	bool trans_realizada3 = false;
+	bool trans_realizada4 = false;
+
+	try
+	{
+		bool trans_realizada1 = centro_N1.realizar_transfusion(&Emilia);
+		bool trans_realizada2 = centro_N2.realizar_transfusion(&Isabella);
+		bool trans_realizada3 = centro_N3.realizar_transfusion(&Emilia);
+		bool trans_realizada4 = centro_N4.realizar_transfusion(&Maria);
+	}
+	catch (invalid_argument& e)
+	{
+		cerr << e.what() << endl;
+	}
+
 	if (trans_realizada1 == true)
 	{
 		cout << "Transusion relizada con exito!" << endl;
@@ -85,8 +100,6 @@ int main()
 		cout << "Hubo complicaciones con la transfusion, ahora pasa al frente de la lista de espera" << endl;
 	}
 
-	cReceptor* paciente_match2 = BancoSA.match(&Isabella);
-	bool trans_realizada2 = centro_N2.realizar_transfusión(&Isabella, paciente_match2);
 	if (trans_realizada2 == true)
 	{
 		cout << "Transusion relizada con exito!" << endl;
@@ -95,8 +108,6 @@ int main()
 		cout << "Hubo complicaciones con la transfusion, ahora pasa al frente de la lista de espera" << endl;
 	}
 
-	cReceptor* paciente_match3 = BancoSA.match(&Delfina);
-	bool trans_realizada3 = centro_N3.realizar_transfusión(&Emilia, paciente_match1);
 	if (trans_realizada3 == true)
 	{
 		cout << "Transusion relizada con exito!" << endl;
@@ -105,8 +116,6 @@ int main()
 		cout << "Hubo complicaciones con la transfusion, ahora pasa al frente de la lista de espera" << endl;
 	}
 
-	cReceptor* paciente_match4 = BancoSA.match(&Maria);
-	bool trans_realizada4 = centro_N4.realizar_transfusión(&Maria, paciente_match1);
 	if (trans_realizada4 == true)
 	{
 		cout << "Transusion relizada con exito!" << endl;
@@ -115,5 +124,5 @@ int main()
 		cout << "Hubo complicaciones con la transfusion, ahora pasa al frente de la lista de espera" << endl;
 	}
 
-
+	return;
 }

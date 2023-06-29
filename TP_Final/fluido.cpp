@@ -17,7 +17,7 @@ tipo cFluido::get_tipo()
 
 bool cFluido:: operator==(cFluido* fluido) {
 	bool flag = false;
-	switch(this->tipo_s)
+	switch (this->tipo_s)
 	{
 	case A:
 		if (this->Rh == '+')
@@ -88,7 +88,7 @@ bool cFluido:: operator==(cFluido* fluido) {
 string cFluido::to_string()
 {
 	stringstream salida;
-	salida << "Tipo de sangre:" << this->tipo_s << ". Rh:" << this->Rh <<endl;
+	salida << "Tipo de sangre:" << this->tipo_s << ". Rh:" << this->Rh << endl;
 	return salida.str();
 }
 
